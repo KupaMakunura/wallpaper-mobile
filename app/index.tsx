@@ -2,7 +2,7 @@ import { screenHeight, screenWidth } from "@/utils";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 const WelcomeScreen = () => {
@@ -10,7 +10,9 @@ const WelcomeScreen = () => {
     <View className="flex-1">
       <StatusBar style="light" />
       <Image
-        className={`h-[${screenHeight(100)}] w-[${screenWidth(100)}] absolute`}
+        className={`h-[${screenHeight(100)}px] w-[${screenWidth(
+          100
+        )}px] absolute`}
         source={require("../assets/images/welcome.png")}
         resizeMode="cover"
       />
