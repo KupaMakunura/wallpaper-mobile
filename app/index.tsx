@@ -2,9 +2,10 @@ import { screenHeight, screenWidth } from "@/utils";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-
+import { Button } from "tamagui";
+import { router } from "expo-router";
 const WelcomeScreen = () => {
   return (
     <View className="flex-1">
@@ -37,8 +38,31 @@ const WelcomeScreen = () => {
       </Animated.View>
       {/* content */}
       <View className="flex-1 items-center justify-end gap-1 py-5">
-        <Text className="text-5xl text-neutral-500 font-bold">Pixels</Text>
-        <Text className="space-x-2 font-medium">Every Pixel Tells a Story</Text>
+        <Animated.Text
+          entering={FadeInDown.delay(400).springify()}
+          className="text-5xl text-neutral-500 font-bold"
+        >
+          Pixels
+        </Animated.Text>
+        <Animated.Text
+          entering={FadeInDown.delay(500).springify()}
+          className="space-x-2 font-medium"
+        >
+          Every Pixel Tells a Story
+        </Animated.Text>
+        {/* button */}
+
+        <Animated.View
+          entering={FadeInDown.delay(600).springify()}
+          className="py-5 w-full flex px-12"
+        >
+          <Button
+            onPress={() => router.push("./home")}
+            className="bg-neutral-700 text-white font-semibold text-lg rounded-lg"
+          >
+            Start Explore
+          </Button>
+        </Animated.View>
       </View>
     </View>
   );
