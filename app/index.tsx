@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { Image, StyleSheet, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { Button } from "tamagui";
+import { Button } from "@rneui/themed";
 import { router } from "expo-router";
 const WelcomeScreen = () => {
   return (
@@ -58,7 +58,15 @@ const WelcomeScreen = () => {
         >
           <Button
             onPress={() => router.push("./home")}
-            className="bg-neutral-700 text-white font-semibold text-lg rounded-lg"
+            buttonStyle={{
+              borderRadius: 50,
+              backgroundColor:"black",
+              paddingVertical:12
+            }}
+            titleStyle={{
+              fontSize:18
+            }}
+           
           >
             Start Explore
           </Button>

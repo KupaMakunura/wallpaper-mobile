@@ -1,0 +1,2 @@
+export { categories } from "./categories";
+

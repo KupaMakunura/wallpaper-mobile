@@ -1,12 +1,12 @@
-import { TamaguiProvider, View } from "tamagui";
-import tamaguiConfig from "@/tamagui.config";
-import React from "react";
+import { View, Text } from 'react-native'
+import React from 'react'
 
-interface Props {
-  children: React.ReactNode;
+const UIProvider = () => {
+  return (
+    <View>
+      <Text>UIProvider</Text>
+    </View>
+  )
 }
-const UIProvider = ({ children }: Props) => (
-  <TamaguiProvider config={tamaguiConfig}>{children}</TamaguiProvider>
-);
 
-export default UIProvider;
+export default UIProvider
