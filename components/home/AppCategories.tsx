@@ -1,13 +1,27 @@
-import { View, Text, FlatList, Pressable } from "react-native";
-import React, { useRef, useState } from "react";
-import Animated, { FadeInRight } from "react-native-reanimated";
 import { categories } from "@/constants";
+import { fetchImages } from "@/services";
 import classNames from "classnames";
+import React, { useEffect, useRef, useState } from "react";
+import { FlatList, Pressable, Text } from "react-native";
+import Animated, { FadeInRight } from "react-native-reanimated";
 
 const AppCategories = () => {
-  const [searchText, setSearchText] = useState<string>();
+
+  
+ 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    // execute the fetch images function controlled by the category
+    fetchImages({
+      editors_choice:false,
+      per_page:256,
+      safesearch:true
+    })
+   
+  }, [activeCategory])
+  
+
 
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);

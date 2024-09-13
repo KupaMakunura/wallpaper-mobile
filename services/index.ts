@@ -1,0 +1,1 @@
+export { fetchImages } from "./api";
