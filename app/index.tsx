@@ -2,9 +2,9 @@ import { screenHeight, screenWidth } from "@/utils";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, View,Text } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { Button } from "@rneui/themed";
+import { Button } from "react-native-paper";
 import { router } from "expo-router";
 const WelcomeScreen = () => {
   return (
@@ -58,17 +58,13 @@ const WelcomeScreen = () => {
         >
           <Button
             onPress={() => router.push("./home")}
-            buttonStyle={{
-              borderRadius: 50,
-              backgroundColor:"black",
-              paddingVertical:12
-            }}
-            titleStyle={{
-              fontSize:18
-            }}
-           
+            className="bg-neutral-800 rounded-md py-1 "
           >
+
+            <Text className="text-white">
             Start Explore
+            </Text>
+          
           </Button>
         </Animated.View>
       </View>

@@ -1,12 +1,11 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from "react";
+import { PaperProvider } from "react-native-paper";
 
-const UIProvider = () => {
-  return (
-    <View>
-      <Text>UIProvider</Text>
-    </View>
-  )
+interface Props {
+  children: React.ReactNode;
 }
+const UIProvider = ({ children }: Props) => {
+  return <PaperProvider>{children}</PaperProvider>;
+};
 
-export default UIProvider
+export default UIProvider;
