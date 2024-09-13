@@ -2,7 +2,7 @@ import AppCategories from "@/components/home/AppCategories";
 import AppHeader from "@/components/home/AppHeader";
 import AppSearchBar from "@/components/home/AppSearchBar";
 import React from "react";
-import { ScrollView, StatusBar, Text, View } from "react-native";
+import { ScrollView, StatusBar, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
@@ -15,7 +15,7 @@ const HomeScreen = () => {
 
       <ScrollView className="gap-[15px]">
         <AppSearchBar />
-        <AppCategories/>
+        <AppCategories />
       </ScrollView>
     </SafeAreaView>
   );
