@@ -7,11 +7,11 @@ import AppImageCard from "./AppImageCard";
 const AppImageGrid = () => {
   const images = useImageStore((state) => state.images);
   return (
-    <View className="w-full px-5 h-auto">
+    <View className="flex-row w-full space-x-1 h-auto  ">
       <MasonryFlashList
-      
+        className="space-x-1 mx-3"
         data={images}
-        numColumns={2}
+        numColumns={1}
         estimatedItemSize={200}
         renderItem={({ item, index }) => (
           <AppImageCard properties={item} index={index} key={index} />

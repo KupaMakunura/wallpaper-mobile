@@ -8,13 +8,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView className={`flex-1  pt-5 w-screen`}>
+    <SafeAreaView className={`flex-1  pt-5 `}>
       <StatusBar backgroundColor="black" />
       <View className="w-full flex">
         <AppHeader />
       </View>
 
-      <ScrollView className="gap-[15]">
+      <ScrollView className="flex w-full">
         {/* searchBar */}
         <AppSearchBar />
         {/* filtering categories */}

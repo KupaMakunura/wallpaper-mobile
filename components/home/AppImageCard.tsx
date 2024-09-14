@@ -8,10 +8,10 @@ interface Props {
 }
 const AppImageCard = ({ properties }: Props) => {
   return (
-    <Pressable className="w-full px-3 rounded-md">
+    <Pressable className="w-full rounded-xl h-auto mb-3 mr-2 space-x-2 overflow-hidden ">
       <Image
         source={{ uri: properties?.webformatURL }}
-        className="h-[300] w-full px-5"
+        className="h-[300] w-full px-5 rounded"
         transition={100}
       />
     </Pressable>
