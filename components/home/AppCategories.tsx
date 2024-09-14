@@ -20,13 +20,14 @@ const AppCategories = () => {
   const handleImageFetching = async () => {
     const data = await fetchImages({
       editors_choice: false,
-      per_page: 200,
+      per_page: 50,
       safesearch: true,
+      category: activeCategory!,
     });
 
-    setImages(data as [])
+    const images = data as [];
 
-    
+    setImages(images);
   };
 
   // handle category change

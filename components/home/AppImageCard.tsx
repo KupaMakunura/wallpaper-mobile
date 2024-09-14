@@ -14,6 +14,7 @@ const AppImageCard = ({ properties }: Props) => {
         className="h-[300] w-full px-5 rounded"
         transition={100}
       />
+      {/* put a bottom bar with like and comment icons */}
     </Pressable>
   );
 };
