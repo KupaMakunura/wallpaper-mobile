@@ -1,5 +1,5 @@
-import axios from "axios";
 import { SearchImageParams } from "@/interfaces";
+import axios from "axios";
 
 // do the axios configuration
 const PixelAPI = axios.create({
@@ -11,12 +11,17 @@ const PixelAPI = axios.create({
 
 // fetch the images
 
-export const fetchImages = async (params: SearchImageParams) => {
+export const fetchImages = async (
+  params: SearchImageParams
+): Promise<[] | {}> => {
   try {
-    const response = await PixelAPI.get("", );
+    const response = await PixelAPI.get("");
 
-    console.log(response.data);
+    return response.data.hits;
   } catch (e) {
-    console.log(e);
+    const response = {
+      error: true,
+    };
+    return response;
   }
 };

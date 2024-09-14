@@ -1,27 +1,35 @@
 import { categories } from "@/constants";
 import { fetchImages } from "@/services";
 import classNames from "classnames";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Pressable, Text } from "react-native";
 import Animated, { FadeInRight } from "react-native-reanimated";
+import { useImageStore } from "@/store";
 
 const AppCategories = () => {
-
-  
- 
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const setImages = useImageStore((state) => state.setImages);
 
   useEffect(() => {
     // execute the fetch images function controlled by the category
-    fetchImages({
-      editors_choice:false,
-      per_page:256,
-      safesearch:true
-    })
-   
-  }, [activeCategory])
-  
+    handleImageFetching();
+  }, [activeCategory]);
 
+  // handle image fetching
+
+  const handleImageFetching = async () => {
+    const data = await fetchImages({
+      editors_choice: false,
+      per_page: 200,
+      safesearch: true,
+    });
+
+    setImages(data as [])
+
+    
+  };
+
+  // handle category change
 
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
