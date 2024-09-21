@@ -45,7 +45,7 @@ const AppCategories = () => {
           .springify()
           .damping(14)}
         className={classNames({
-          "w-auto  items-center bg-gray-200 rounded-lg mx-1": true,
+          "w-auto  items-center bg-gray-200 rounded-full mx-1": true,
           "bg-neutral-700 text-white": activeCategory === title,
         })}
       >
