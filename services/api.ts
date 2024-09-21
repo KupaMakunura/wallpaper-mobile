@@ -5,7 +5,7 @@ import axios from "axios";
 const PixelAPI = axios.create({
   baseURL: "https://pixabay.com/api/",
   params: {
-    key: process.env.EXPO_PUBLIC_PIXEL_API_KEY!,
+    key: "45972738-820fd57ccb5d06fe6a0a4cd16",
   },
 });
 
@@ -15,7 +15,6 @@ export const fetchImages = async (
   params: SearchImageParams
 ): Promise<[] | {}> => {
   try {
-    
     const response = await PixelAPI.get("", { params: params });
 
     return response.data.hits;

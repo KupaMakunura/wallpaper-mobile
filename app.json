@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kupamakunura.wallpaper"
     },
     "android": {
       "adaptiveIcon": {
@@ -32,6 +33,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa80f088-eb0a-48ae-8532-84d314307af4"
+      }
     }
   }
 }
