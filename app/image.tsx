@@ -1,9 +1,12 @@
+import { Entypo, Octicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
-import React, { useState } from "react";
-import { Text, View } from "react-native";
-import { useLocalSearchParams, router } from "expo-router";
 import { Image } from "expo-image";
-import { ActivityIndicator } from "react-native-paper";
+import { router, useLocalSearchParams } from "expo-router";
+import React, { useState } from "react";
+import { View } from "react-native";
+import { ActivityIndicator, IconButton } from "react-native-paper";
+import AppIconButton from "@/components/core/AppIconButton";
+
 const ImageModal = () => {
   const params = useLocalSearchParams();
   const imageUrl = params?.webformatURL;
@@ -39,8 +42,19 @@ const ImageModal = () => {
         onLoad={() => handleOnLoad()}
         source={imageUrl}
       />
-
-      <Text onPress={() => router.back()}>ImageModal</Text>
+      {/* the actions */}
+      <View className="flex-row w-full justify-between px-10 mt-5">
+        <AppIconButton
+          icon={() => <Octicons name="x" size={24} color="white" />}
+          onPress={() => router.back()}
+        />
+        <AppIconButton
+          icon={() => <Octicons name="download" size={24} color="white" />}
+        />
+        <AppIconButton
+          icon={() => <Entypo name="share" color="white" size={24} />}
+        />
+      </View>
     </BlurView>
   );
 };
