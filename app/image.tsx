@@ -1,20 +1,61 @@
+import AppIconButton from "@/components/core/AppIconButton";
 import { Entypo, Octicons } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
 import { Image } from "expo-image";
 import { router, useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { View } from "react-native";
-import { ActivityIndicator, IconButton } from "react-native-paper";
-import AppIconButton from "@/components/core/AppIconButton";
+import { Alert, View } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
 
 const ImageModal = () => {
   const params = useLocalSearchParams();
-  const imageUrl = params?.webformatURL;
+
+  const imageUrl = params?.webformatURL as string;
+  const imagePath = params?.previewURL as string;
+  const imageName = imagePath.split("/").pop();
+
+  const imageFilePath = `${FileSystem.documentDirectory}${imageName}`;
+
   const [loading, setLoading] = useState<boolean>(true);
+  const [isDownloading, setIsDownloading] = useState<boolean>(false);
 
   // handle on image load
   const handleOnLoad = () => {
     setLoading(false);
+  };
+
+  const downloadFile = async (): Promise<string | null> => {
+    try {
+      const { uri } = await FileSystem.downloadAsync(imageUrl, imageFilePath);
+
+      // change downloading status
+
+      if (uri) {
+        setIsDownloading(false);
+        // show toast when download is successful
+      }
+
+      return uri;
+    } catch (error) {
+      // set downloading status to false
+      setIsDownloading(false);
+      Alert.alert("Error downloading image");
+
+      return null;
+    }
+  };
+  // handle image download
+  const handleImageDownload = async () => {
+    setIsDownloading(true);
+    await downloadFile();
+  };
+
+  // handle image sharing
+  const handleShareImage = async () => {
+    const imageURI = await downloadFile();
+    await Sharing.shareAsync(imageURI!);
   };
 
   return (
@@ -50,9 +91,13 @@ const ImageModal = () => {
         />
         <AppIconButton
           icon={() => <Octicons name="download" size={24} color="white" />}
+          onPress={() => handleImageDownload()}
+          loading={isDownloading}
         />
         <AppIconButton
           icon={() => <Entypo name="share" color="white" size={24} />}
+          onPress={() => handleShareImage()}
+          loading={isDownloading}
         />
       </View>
     </BlurView>
