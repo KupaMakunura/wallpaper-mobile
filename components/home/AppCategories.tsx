@@ -9,6 +9,7 @@ import { useImageStore } from "@/store";
 const AppCategories = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const setImages = useImageStore((state) => state.setImages);
+  const setSearchText = useImageStore(state=>state.setSearchText)
 
   useEffect(() => {
     // execute the fetch images function controlled by the category
@@ -18,22 +19,29 @@ const AppCategories = () => {
   // handle image fetching
 
   const handleImageFetching = async () => {
+
+    
     const data = await fetchImages({
-      editors_choice: false,
       per_page: 50,
       safesearch: true,
       category: activeCategory!,
-    });
+    }) as [];
 
-    const images = data as [];
-
-    setImages(images);
+    setImages(data);
   };
 
   // handle category change
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
+  const handleCategoryChange = async (category: string) => {
+
+
+    // empty the searchText Field
+
+    setSearchText("")
+
+    setActiveCategory(category)
+    
+
   };
 
   // one category item
@@ -45,7 +53,7 @@ const AppCategories = () => {
           .springify()
           .damping(14)}
         className={classNames({
-          "w-auto  items-center bg-gray-200 rounded-full mx-1": true,
+          "w-auto  items-center bg-gray-200 rounded-lg mx-1": true,
           "bg-neutral-700 text-white": activeCategory === title,
         })}
       >

@@ -14,6 +14,7 @@ const AppSearchBar = () => {
   // handle text change
   const handleSearchText = async () => {
     
+    // fetch the data for search
     const data = await  fetchImages({ q: searchText, per_page: 50, safesearch: true }) as [];
     setImages(data)
 
@@ -30,7 +31,7 @@ const AppSearchBar = () => {
         value={searchText!}
         onIconPress={()=>handleSearchText()}
         placeholder="Search for photos ..."
-        className="rounded-full bg-neutral-50 text-black"
+        className="rounded-lg bg-neutral-50 text-black"
         inputStyle={{
           color:"black",
         }}

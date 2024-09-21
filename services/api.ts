@@ -15,6 +15,7 @@ export const fetchImages = async (
   params: SearchImageParams
 ): Promise<[] | {}> => {
   try {
+    
     const response = await PixelAPI.get("", { params: params });
 
     return response.data.hits;
