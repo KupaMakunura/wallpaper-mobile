@@ -9,7 +9,7 @@ import { useImageStore } from "@/store";
 const AppCategories = () => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const setImages = useImageStore((state) => state.setImages);
-  const setSearchText = useImageStore(state=>state.setSearchText)
+  const setSearchText = useImageStore((state) => state.setSearchText);
 
   useEffect(() => {
     // execute the fetch images function controlled by the category
@@ -19,13 +19,11 @@ const AppCategories = () => {
   // handle image fetching
 
   const handleImageFetching = async () => {
-
-    
-    const data = await fetchImages({
-      per_page: 50,
+    const data = (await fetchImages({
+      per_page: 80,
       safesearch: true,
       category: activeCategory!,
-    }) as [];
+    })) as [];
 
     setImages(data);
   };
@@ -33,15 +31,11 @@ const AppCategories = () => {
   // handle category change
 
   const handleCategoryChange = async (category: string) => {
-
-
     // empty the searchText Field
 
-    setSearchText("")
+    setSearchText("");
 
-    setActiveCategory(category)
-    
-
+    setActiveCategory(category);
   };
 
   // one category item

@@ -22,6 +22,7 @@ const HomeScreen = () => {
 
         {/* the image list */}
         <AppImageGrid />
+        {/* app bottom sheet */}
       </ScrollView>
     </SafeAreaView>
   );
