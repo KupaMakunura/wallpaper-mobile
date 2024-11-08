@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 interface ImageState {
   images: any[];
@@ -16,7 +16,7 @@ export const useImageStore = create<ImageState>((set, get) => ({
     if (text.length > 0) {
       set({ searchText: text });
     } else {
-      set({ searchText: "" });
+      set({ searchText: '' });
     }
-  },
+  }
 }));

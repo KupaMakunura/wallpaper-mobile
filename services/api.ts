@@ -1,11 +1,11 @@
-import { SearchImageParams } from "@/interfaces";
-import axios from "axios";
+import { SearchImageParams } from '@/interfaces';
+import axios from 'axios';
 
 // do the axios configuration
 const PixelAPI = axios.create({
-  baseURL: "https://pixabay.com/api/",
+  baseURL: 'https://pixabay.com/api/',
   params: {
-    key: "45972738-820fd57ccb5d06fe6a0a4cd16",
+    key: '45972738-820fd57ccb5d06fe6a0a4cd16',
   },
 });
 
@@ -15,7 +15,7 @@ export const fetchImages = async (
   params: SearchImageParams
 ): Promise<[] | {}> => {
   try {
-    const response = await PixelAPI.get("", { params: params });
+    const response = await PixelAPI.get('', { params: params });
 
     return response.data.hits;
   } catch (e) {
